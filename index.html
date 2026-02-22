@@ -165,6 +165,32 @@ footer{
 @media(max-width:768px){
   h1{font-size:36px;}
   .nav{flex-direction:column; gap:10px;}
+
+  .contact-links {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.contact-item a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+  color: var(--accent);
+}
 }
 </style>
 </head>

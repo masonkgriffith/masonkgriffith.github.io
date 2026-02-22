@@ -1,118 +1,359 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mason Griffith | Network & Security Engineer</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(180deg, #0f172a, #111827);
-            color: white;
-            text-align: center;
-        }
-        .container {
-            padding: 80px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            color: #60a5fa;
-            margin-bottom: 15px;
-        }
-        .card {
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 15px;
-        }
-        p {
-            line-height: 1.6;
-        }
-        a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mason Griffith | Network & Security</title>
+
+  <style>
+    :root {
+      --bg0: #0b1220;
+      --bg1: #0a0f1a;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: rgba(255, 255, 255, 0.06);
+      --card2: rgba(255, 255, 255, 0.09);
+      --border: rgba(255, 255, 255, 0.10);
+      --accent: #60a5fa;
+      --accent2: #3b82f6;
+      --radius: 18px;
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(96, 165, 250, 0.30) 0%, transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(59, 130, 246, 0.18) 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 18px 80px;
+    }
+
+    /* Top nav (simple + clean like Jake's) */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 4px 26px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(96,165,250,.65);
+    }
+    .navlinks {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .navlinks a {
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    .navlinks a:hover {
+      color: var(--text);
+      border-color: rgba(96,165,250,.28);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 34px 8px 22px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 52px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+    .tagline {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .sub {
+      margin: 0 auto;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* Buttons row */
+    .btnrow {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .14s ease, background .14s ease, border-color .14s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(96,165,250,.40);
+      text-decoration: none;
+    }
+    .btn.primary {
+      background: linear-gradient(180deg, rgba(96,165,250,.95), rgba(59,130,246,.95));
+      border-color: rgba(96,165,250,.65);
+      color: #071022;
+    }
+    .btn.primary:hover {
+      border-color: rgba(96,165,250,.95);
+      background: linear-gradient(180deg, rgba(123,182,255,.98), rgba(96,165,250,.98));
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
+    }
+
+    .list {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .item {
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.16);
+      transition: background .14s ease, border-color .14s ease, transform .14s ease;
+    }
+    .item:hover {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(96,165,250,.35);
+      transform: translateY(-1px);
+    }
+    .item strong {
+      color: var(--text);
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .pillrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .pill {
+      padding: 9px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 26px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      h1 { font-size: 42px; }
+      .split { grid-template-columns: 1fr; }
+      .nav { flex-direction: column; align-items: flex-start; }
+      .navlinks { justify-content: flex-start; }
+    }
+  </style>
 </head>
+
 <body>
-
-<div class="container">
-    <h1>Mason Griffith</h1>
-    <h2>I build secure network and hybrid cloud environments.</h2>
-
-    <!-- ABOUT ME SECTION -->
-    <div class="card">
-    <h2>About Me</h2>
-    <p>
-        I started in tech and never looked back.
-    </p>
-
-    <p>
-        In high school, I spent a lot of time gaming on console and wanted to level up to a gaming PC. 
-        On a tight budget and unable to afford prebuilt systems, I stepped outside my comfort zone 
-        and built my own. That decision sparked my passion for technology and problem-solving.
-    </p>
-
-    <p>
-        I quickly became the go-to “IT” person for friends and family, which led to me starting 
-        my career as a Help Desk Technician right out of high school. My natural curiosity pushed 
-        me to go deeper than basic support, and that’s when I discovered network engineering — and I was hooked.
-    </p>
-
-    <p>
-        With mentorship from a network administrator early in my career, I pursued and earned my 
-        Network+ and CCNA certifications. Since then, I’ve focused on building real-world lab 
-        environments that mirror enterprise networks — working with firewalls, segmentation, 
-        secure service publishing, and hybrid cloud security.
-    </p>
-
-    <p>
-        Today, I continue sharpening my skills through hands-on labs and studying advanced networking 
-        and cloud technologies. I also enjoy mentoring others — helping friends with no direction 
-        break into IT and build careers of their own.
-    </p>
-</div>
-
-    <!-- LABS -->
-    <div class="card">
-        <h2>Featured Labs</h2>
-
-        <p><strong>pfSense Enterprise Firewall Lab</strong><br>
-        Built LAN / DMZ / MGMT segmentation with stateful firewall rules, NAT, and HTTPS publishing.</p>
-
-        <p><strong>DMZ Web Server Deployment</strong><br>
-        Deployed IIS in a DMZ, configured inbound 80/443 access, and validated rule enforcement.</p>
-
-        <p><strong>AZ-104 Hybrid Security Lab (In Progress)</strong><br>
-        Implementing Entra ID, RBAC, NSGs, Conditional Access, and Azure monitoring solutions.</p>
+  <div class="wrap">
+    <!-- NAV -->
+    <div class="nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Mason Griffith</span>
+      </div>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#labs">Labs</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
 
-    <!-- CERTIFICATIONS -->
-    <div class="card">
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Mason Griffith</h1>
+      <p class="tagline">Network Operations • Firewall • Hybrid Cloud</p>
+      <p class="sub">
+        I build secure network and hybrid cloud environments—focused on segmentation, reliable traffic flow,
+        and practical security. CCNA & Security+ with hands-on labs in pfSense and Azure.
+      </p>
+
+      <div class="btnrow">
+        <!-- Make sure this PDF exists in your repo root -->
+        <a class="btn primary" href="Mason%20Griffith%20-%20Resume.pdf" target="_blank">Resume</a>
+        <a class="btn" href="https://www.linkedin.com/in/mason-griffith1/" target="_blank">LinkedIn</a>
+        <a class="btn" href="https://github.com/masonkgriffith" target="_blank">GitHub</a>
+        <a class="btn" href="mailto:Masonkg74@icloud.com">Email</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- ABOUT -->
+      <section class="card" id="about">
+        <h2>About</h2>
+        <p>
+          I started in tech and never looked back. In high school, I wanted to level up from console gaming to a PC,
+          but prebuilt systems were out of my budget—so I built my own. That decision sparked my passion for
+          technology and problem-solving.
+          <br /><br />
+          I quickly became the go-to “IT” person for friends and family, which led to my first role as a Help Desk Technician
+          right out of high school. My curiosity pushed me beyond basic support, and that’s when I discovered network engineering.
+          With mentorship from a network administrator early in my career, I earned my Network+ and CCNA.
+          <br /><br />
+          Today, I sharpen my skills by building real-world labs that mirror enterprise environments—firewalls, DMZs,
+          segmentation, secure service publishing, and hybrid cloud security. I also enjoy mentoring others and helping
+          friends break into IT.
+        </p>
+      </section>
+
+      <!-- LABS + STACK -->
+      <div class="split" id="labs">
+        <section class="card">
+          <h2>Featured Labs</h2>
+          <ul class="list">
+            <li class="item">
+              <strong>pfSense Enterprise Firewall Lab</strong>
+              Built LAN / DMZ / MGMT segmentation with stateful firewall rules, NAT, and secure service publishing.
+            </li>
+            <li class="item">
+              <strong>DMZ Web Server Deployment (IIS)</strong>
+              Deployed IIS in a DMZ, configured inbound 80/443 access, validated firewall policy enforcement.
+            </li>
+            <li class="item">
+              <strong>AZ-104 Hybrid Security Lab (In Progress)</strong>
+              Implementing Entra ID, RBAC, NSGs, Conditional Access, and Azure monitoring with Log Analytics.
+            </li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Tech Stack</h2>
+          <p>Tools and technologies I work with (and document in labs):</p>
+          <div class="pillrow">
+            <span class="pill">pfSense</span>
+            <span class="pill">VLANs</span>
+            <span class="pill">NAT / PAT</span>
+            <span class="pill">DMZ Design</span>
+            <span class="pill">IPSec VPN</span>
+            <span class="pill">Cisco IOS</span>
+            <span class="pill">Windows Server</span>
+            <span class="pill">Active Directory</span>
+            <span class="pill">Microsoft Entra ID</span>
+            <span class="pill">Azure VNets</span>
+            <span class="pill">NSGs</span>
+            <span class="pill">RBAC</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <section class="card" id="certs">
         <h2>Certifications</h2>
         <p>CompTIA A+ • Network+ • Security+ • Cisco CCNA • Microsoft AZ-104 (In Progress)</p>
-    </div>
+      </section>
 
-    <!-- CONTACT -->
-    <div class="card">
+      <!-- CONTACT -->
+      <section class="card" id="contact">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:Masonkg74@icloud.com">Masonkg74@icloud.com</a></p>
-        <p>LinkedIn: 
-            <a href="https://www.linkedin.com/in/mason-griffith1/" target="_blank">
-                linkedin.com/in/mason-griffith1
-            </a>
+        <p>
+          Email: <a href="mailto:Masonkg74@icloud.com">Masonkg74@icloud.com</a><br />
+          LinkedIn: <a href="https://www.linkedin.com/in/mason-griffith1/" target="_blank">linkedin.com/in/mason-griffith1</a><br />
+          GitHub: <a href="https://github.com/masonkgriffith" target="_blank">github.com/masonkgriffith</a>
         </p>
+      </section>
     </div>
-</div>
 
+    <footer>
+      © <script>document.write(new Date().getFullYear());</script> Mason Griffith • Built with GitHub Pages
+    </footer>
+  </div>
 </body>
 </html>

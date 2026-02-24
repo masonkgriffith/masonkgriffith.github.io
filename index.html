@@ -123,16 +123,18 @@ h1{font-size:46px; margin:0 0 10px; font-weight:900;}
   background:rgba(96,165,250,.15);
 }
 
-/* LOCAL SERVICES */
+/* LOCAL SERVICES (ADDED) */
 #local-services h3{
-  margin-top:20px;
+  margin-top:18px;
+  margin-bottom:8px;
   font-size:15px;
   color:var(--accent);
 }
 #local-services ul{
-  margin:8px 0 0 18px;
+  margin:0 0 0 18px;
+  padding:0;
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.7;
 }
 
 /* CONTACT */
@@ -155,7 +157,11 @@ h1{font-size:46px; margin:0 0 10px; font-weight:900;}
   text-decoration: none;
   font-weight: 700;
 }
-.card a:visited { color: var(--accent); }
+
+.card a:visited {
+  color: var(--accent);
+}
+
 .card a:hover {
   text-decoration: underline;
   color: #93c5fd;
@@ -208,8 +214,84 @@ footer{
 
 <div class="grid">
 
-<!-- YOUR ORIGINAL SECTIONS REMAIN 100% UNCHANGED ABOVE -->
+<section class="card" id="about">
+<h2>About Me</h2>
+<p>
+I started in tech and never looked back.
+    <br><br>
+    In high school, I spent a lot of time gaming on console and wanted to level up to a gaming PC.
+    On a tight budget and unable to afford prebuilt systems, I stepped outside my comfort zone and built my own.
+    That decision sparked my passion for technology and problem-solving.
+    <br><br>
+    I quickly became the go-to “IT” person for friends and family, which led to me starting my career
+    as a Help Desk Technician right out of high school. My natural curiosity pushed me beyond basic
+    support, and that’s when I discovered network engineering — and I was hooked.
+    <br><br>
+    With mentorship and guidance from colleagues early in my career, I pursued and earned my
+    Network+ and CCNA certifications. Since then, I’ve focused on building real-world lab
+    environments that mirror enterprise networks — working with firewalls, segmentation,
+    secure service publishing, and hybrid cloud security.
+    <br><br>
+    Today, I continue sharpening my skills through hands-on labs and advanced networking study
+    while building toward a full Network / Security Engineering role. I also enjoy mentoring
+    others and helping friends break into IT, teaching them how to turn curiosity into a career.
+</p>
+</section>
 
+<section class="card" id="labs">
+  <h2>Featured Labs</h2>
+
+  <p>
+    <strong>
+      <a href="https://github.com/masonkgriffith/Networking-Security-Labs/tree/main/Zero-Trust-Enterprise-Security-Lab" target="_blank">
+        Zero-Trust Enterprise Network Security Lab
+      </a>
+    </strong><br>
+    Engineered a Zero-Trust enterprise network with zone-based segmentation (User, Server, DMZ, Management),
+    explicite east-west isolation, controlled HTTPS service plublishing via NAT, restricted server egress, 
+    and validated containment of simulated lateral movement through logged firewall enforcement. 
+  </p>
+
+  <br>
+
+  <p>
+    <strong>
+      <a href="https://github.com/masonkgriffith/Networking-Security-Labs/tree/main/Enterprise-Campus-Routing-Redundance-Lab" target="_blank">
+        Enterprise VLAN, OSPF & High-Availability Campus Network Lab
+      </a>
+    </strong><br>
+    Engineered a hierarchical enterprise campus network incorporating VLAN segmentation, inter-VLAN routing,
+    multi-area OSPF, route summarization, and HSRP-based gateway redundancy to model production-grade internal network design.
+  </p>
+
+</section>
+
+<section class="card" id="stack">
+<h2>Tech Stack</h2>
+<div class="stack">
+  <span>pfSense</span>
+  <span>Cisco IOS</span>
+  <span>VLAN Segmentation</span>
+  <span>Inter-VLAN Routing</span>
+  <span>NAT / PAT</span>
+  <span>IPSec VPN</span>
+  <span>Windows Server</span>
+  <span>Active Directory</span>
+  <span>Microsoft Entra ID</span>
+  <span>Azure VNets</span>
+  <span>NSGs</span>
+  <span>RBAC</span>
+  <span>ServiceNow</span>
+  <span>ConnectWise</span>
+</div>
+</section>
+
+<section class="card" id="certs">
+<h2>Certifications</h2>
+<p>CompTIA A+ • Network+ • Security+ • Cisco CCNA • Microsoft AZ-104 (In Progress)</p>
+</section>
+
+<!-- LOCAL IT SERVICES SECTION (ADDED) -->
 <section class="card" id="local-services">
 <h2>Local IT & Network Support Services</h2>
 
@@ -235,12 +317,11 @@ Solutions are implemented with security, reliability, and long-term stability in
   <li>Router replacement & configuration</li>
   <li>Secure wireless deployment</li>
   <li>Network performance troubleshooting</li>
-  <li>Structured cabling consultation</li>
 </ul>
 
 <h3>Firewall & Security Configuration</h3>
 <ul>
-  <li>Firewall installation & configuration (pfSense / SMB firewalls)</li>
+  <li>Firewall installation & configuration</li>
   <li>Basic VLAN segmentation</li>
   <li>Remote access VPN setup</li>
   <li>Network security hardening</li>
@@ -261,6 +342,19 @@ Solutions are implemented with security, reliability, and long-term stability in
 If you need dependable IT support backed by real networking and infrastructure knowledge,
 feel free to reach out using the contact information below.
 </p>
+</section>
+
+<section class="card contact" id="contact">
+<h2>Let’s Connect</h2>
+<p>
+Whether it’s networking, lab design, or career growth — I’m always open to connecting with driven people in tech.
+</p>
+
+<div class="contact-links">
+  <a href="mailto:Mason@masonkgriffith.com">Mason@masonkgriffith.com</a>
+  <a href="https://www.linkedin.com/in/mason-griffith1/" target="_blank">LinkedIn</a>
+  <a href="https://github.com/masonkgriffith" target="_blank">GitHub</a>
+</div>
 </section>
 
 </div>
